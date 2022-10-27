@@ -5,7 +5,7 @@ import os
 
 class Playback:
     chunk = 1024
-    dirPath = "/home/pi/boda"
+    dirPath = "/home/pi/boda/grabaciones"
     isPlay = False
     #
     # def __init__(self):
@@ -38,7 +38,7 @@ class Playback:
 
     def playSaludo(self,  GPIO, buttonPin):
         self.p = pyaudio.PyAudio()
-        self.wf = wave.open(self.dirPath + '/saludo.wav', 'rb')
+        self.wf = wave.open('/home/pi/boda/saludo.wav', 'rb')
         self.isPlay = True
 
         self.stream = self.p.open(

@@ -48,7 +48,7 @@ class Recorder:
 
     def writeAudio(self):
         today = datetime.today()
-        filename = "/home/pi/boda/"+today.strftime('%d-%m-%Y %H:%M:%S') + ".wav"
+        filename = "/home/pi/boda/grabaciones/"+today.strftime('%d-%m-%Y %H:%M:%S') + ".wav"
         wavefile = wave.open(filename, 'wb')
         wavefile.setnchannels(self.chans)
         wavefile.setsampwidth(self.audio.get_sample_size(self.form1))
