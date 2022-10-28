@@ -57,8 +57,8 @@ class Playback:
 
         print("termino saludo")
 
-        if self.isPlay:
-            self.close()
+        # if self.isPlay:
+        self.close()
 
     def close(self):
         self.isPlay = False

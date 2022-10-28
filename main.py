@@ -38,6 +38,8 @@ class Estado(enum.Enum):
     Saludo = 2
     Grabando = 3
     Reproduciendo = 4
+    Finalizado = 5
+
 
 buttonPin = 16
 estadoActual = Estado.Esperando
@@ -56,20 +58,15 @@ while True:
             estadoActual = Estado.Saludo
             time.sleep(2)
             playback.playSaludo(GPIO, buttonPin)
-        # else:
-        #     print("esperando.......")
 
     elif estadoActual == Estado.Saludo:
-
-        if (buttonState == False):
-            if (not playback.isPlay):
-                # grabar audio
+        if (not playback.isPlay):
+            # grabar audio
+            if(buttonState == False):
                 print("grabar audio")
                 estadoActual = Estado.Grabando
                 recorder.iniciarGrabacion()
-        else:
-            if (playback.isPlay):
-                playback.close()
+            else:
                 estadoActual = Estado.Esperando
 
     elif estadoActual == Estado.Grabando:
