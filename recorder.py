@@ -6,7 +6,7 @@ class Recorder:
     form1 = pyaudio.paInt16  # 16-bit resolution
     chans = 1  # 1 channel
     samp_rate = 44100  # 44.1 khz sampling rate
-    chunk = 4096  # 2^12 sample for buffer
+    chunk = 1024  # 2^12 sample for buffer
     # record_secs = 15  # seconds to record
     dev_index = 1  # device index found by p.get_device_info_by_index(ii)
     audio = None
@@ -21,7 +21,6 @@ class Recorder:
 
     def iniciarGrabacion(self):
         self.audio = pyaudio.PyAudio()
-        print(self.chans)
         self.stream = self.audio.open(format=self.form1, rate=self.samp_rate, channels=self.chans,
                                       input_device_index=self.dev_index, input=True,
                                       frames_per_buffer=self.chunk)
@@ -37,7 +36,7 @@ class Recorder:
         # self.audio.terminate()
 
     def update(self):
-        data = self.stream.read(self.chunk)
+        data = self.stream.read(self.chunk, exception_on_overflow=False)
         self.frames.append(data)
 
     def stopRecording(self):
