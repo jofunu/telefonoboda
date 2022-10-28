@@ -6,7 +6,7 @@ class Recorder:
     form1 = pyaudio.paInt16  # 16-bit resolution
     chans = 1  # 1 channel
     samp_rate = 44100  # 44.1 khz sampling rate
-    chunk = 1024  # 2^12 sample for buffer
+    chunk = 4096  # 2^12 sample for buffer
     # record_secs = 15  # seconds to record
     dev_index = 1  # device index found by p.get_device_info_by_index(ii)
     audio = None
